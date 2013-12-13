@@ -1,8 +1,12 @@
 % Wire protocol message types (records)
 
+-export_type([
+	collection/0
+]).
+
 -type db() :: atom().
 
--type collection() :: atom(). % without db prefix
+-type collection() :: mongo:collection(). % without db prefix
 
 -type cursorid() :: integer().
 
@@ -40,7 +44,7 @@
 	selector :: selector(),
 	projector = [] :: projector() }).
 
--type projector() :: bson:document().
+-type projector() :: bson:document() | [].
 -type skip() :: integer().
 -type batchsize() :: integer(). % 0 = default batch size. negative closes cursor
 
